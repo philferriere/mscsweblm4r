@@ -1,8 +1,24 @@
-# {mscsweblm4r}
-Phil Ferriere  
-May 2016  
+---
+title: "{mscsweblm4r}"
+subtitle: "R Client for the Microsoft Cognitive Services Web Language Model REST API"
+author: "Phil Ferriere"
+date: "May 2016"
+geometry: margin=0cm
+output:
+  html_document:
+    self_contained: true
+    highlight: tango
+    keep_md: yes
+    theme: cerulean
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+---
 
-
+```{r echo=FALSE}
+library("knitr")
+knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
+```
 
 The Microsoft Cognitive Services (MSCS) website provides several code samples
 that illustrate how to use the awesome Web LM REST API from C#, Java, JavaScript, ObjC, PHP, Python, Ruby,
@@ -52,8 +68,7 @@ reproducible example.
 
 You can either install the latest **stable** version from CRAN:
 
-
-```r
+```{r eval=FALSE}
 if ("mscsweblm4r" %in% installed.packages()[,"Package"] == FALSE) {
   install.packages("mscsweblm4r", repos = "http://cran.us.r-project.org")
 }
@@ -61,8 +76,7 @@ if ("mscsweblm4r" %in% installed.packages()[,"Package"] == FALSE) {
 
 Or, you can install the **development** version
 
-
-```r
+```{r eval=FALSE}
 if ("mscsweblm4r" %in% installed.packages()[,"Package"] == FALSE) {
   if ("devtools" %in% installed.packages()[,"Package"] == FALSE) {
     install.packages("devtools", repos = "http://cran.us.r-project.org")
@@ -122,8 +136,7 @@ also included many examples, as you'll see below.
 
 Here's some sample code that illustrates how to use `tryCatch()`:
 
-
-```r
+```{r}
 tryCatch({
 
   library('mscsweblm4r')
@@ -138,8 +151,7 @@ tryCatch({
 If `{mscsweblm4r}` cannot locate `.mscskeys.json` nor any of the configuration
 environment variables, the code above will generate the following output:
 
-
-```r
+```{r eval=FALSE}
 Error : .onAttach failed in attachNamespace() for 'mscsweblm4r', details:
   call: NULL
   error: mscsweblm4r: could not find MSCS_WEBLANGUAGEMODEL_KEY or MSCS_WEBLANGUAGEMODEL_URL in Sys env nor locate ~/.mscskeys.json
@@ -154,14 +166,12 @@ This is why it is so important to use `tryCatch()`.
 
 The five API calls exposed by `{mscsweblm4r}` are the following:
 
-
-```r
+```{r eval = FALSE}
   # Retrieve a list of supported web language models
   weblmListAvailableModels()
 ```
 
-
-```r
+```{r eval = FALSE}
   # Break a string of concatenated words into individual words
   weblmBreakIntoWords(
     textToBreak,                      # ASCII only
@@ -171,8 +181,7 @@ The five API calls exposed by `{mscsweblm4r}` are the following:
   )
 ```
 
-
-```r
+```{r eval = FALSE}
   # Get the words most likely to follow a sequence of words
   weblmGenerateNextWords(
     precedingWords,                  # ASCII only
@@ -182,8 +191,7 @@ The five API calls exposed by `{mscsweblm4r}` are the following:
   )
 ```
 
-
-```r
+```{r eval = FALSE}
   # Calculate the joint probability that a particular sequence of words will appear together
   weblmCalculateJointProbability(
     inputWords =,                    # ASCII only
@@ -192,8 +200,7 @@ The five API calls exposed by `{mscsweblm4r}` are the following:
   )
 ```
 
-
-```r
+```{r eval = FALSE}
   # Calculate the conditional probability that a particular word will follow a given sequence of words
   weblmCalculateConditionalProbability(
     precedingWords,                  # ASCII only
@@ -216,8 +223,7 @@ refer to the [original documentation](https://www.microsoft.com/cognitive-servic
 
 ### List Available Models function
 
-
-```r
+```{r}
 tryCatch({
 
   # Retrieve a list of supported web language models
@@ -229,57 +235,11 @@ tryCatch({
  geterrmessage()
 
 })
-#> weblm [https://api.projectoxford.ai/text/weblm/v1.0/models]
-#> 
-#> -------------------------------------------------
-#>             corpus              model   maxOrder 
-#> ------------------------------ ------- ----------
-#>    bing webpage title text      title      5     
-#>            2013-12                               
-#> 
-#> bing webpage body text 2013-12  body       5     
-#> 
-#>  bing web query text 2013-12    query      5     
-#> 
-#>    bing webpage anchor text    anchor      5     
-#>            2013-12                               
-#> -------------------------------------------------
-#> 
-#> Table: Table continues below
-#> 
-#>  
-#> -------------------------------------------------------------
-#>  calculateJointProbability   calculateConditionalProbability 
-#> --------------------------- ---------------------------------
-#>          supported                      supported            
-#> 
-#>          supported                      supported            
-#> 
-#>          supported                      supported            
-#> 
-#>          supported                      supported            
-#> -------------------------------------------------------------
-#> 
-#> Table: Table continues below
-#> 
-#>  
-#> ------------------------------------
-#>  generateNextWords   breakIntoWords 
-#> ------------------- ----------------
-#>      supported         supported    
-#> 
-#>      supported         supported    
-#> 
-#>      supported         supported    
-#> 
-#>      supported         supported    
-#> ------------------------------------
 ```
 
 ### Break Into Words function
 
-
-```r
+```{r}
 tryCatch({
 
   # Break a sentence into words
@@ -296,27 +256,11 @@ tryCatch({
   geterrmessage()
 
 })
-#> weblm [https://api.projectoxford.ai/text/weblm/v1.0/breakIntoWords?model=body&text=testforwordbreak&order=5&maxNumOfCandidatesReturned=5]
-#> 
-#> ---------------------------------
-#>        words         probability 
-#> ------------------- -------------
-#> test for word break    -13.83    
-#> 
-#> test for wordbreak     -14.63    
-#> 
-#> testfor word break     -15.94    
-#> 
-#> test forword break     -16.72    
-#> 
-#>  testfor wordbreak     -17.41    
-#> ---------------------------------
 ```
 
 ### Generate Next Word function
 
-
-```r
+```{r}
 tryCatch({
 
   # Generate next words
@@ -333,27 +277,11 @@ tryCatch({
   geterrmessage()
 
 })
-#> weblm [https://api.projectoxford.ai/text/weblm/v1.0/generateNextWords?model=title&words=how%20are%20you&order=4&maxNumOfCandidatesReturned=5]
-#> 
-#> ---------------------
-#>  word    probability 
-#> ------- -------------
-#>  doing     -1.105    
-#> 
-#>   in       -1.239    
-#> 
-#> feeling    -1.249    
-#> 
-#>  going     -1.378    
-#> 
-#>  today      -1.43    
-#> ---------------------
 ```
 
 ### Calculate Joint Probability function
 
-
-```r
+```{r}
 tryCatch({
 
   # Calculate the joint probability that a particular sequence of words will appear together
@@ -369,31 +297,11 @@ tryCatch({
   geterrmessage()
 
 })
-#> weblm [https://api.projectoxford.ai/text/weblm/v1.0/calculateJointProbability?model=query&order=4]
-#> 
-#> ------------------------------------
-#>         words           probability 
-#> ---------------------- -------------
-#>         where             -3.378    
-#> 
-#>           is              -2.607    
-#> 
-#>          san              -3.292    
-#> 
-#>       francisco           -4.051    
-#> 
-#>        where is           -3.961    
-#> 
-#>     san francisco         -4.086    
-#> 
-#> where is san francisco    -7.998    
-#> ------------------------------------
 ```
 
 ### Calculate Conditional Probability function
 
-
-```r
+```{r}
 tryCatch({
 
   # Calculate the conditional probability that a particular word will follow a given sequence of words
@@ -410,17 +318,6 @@ tryCatch({
   geterrmessage()
 
 })
-#> weblm [https://api.projectoxford.ai/text/weblm/v1.0/calculateConditionalProbability?model=title&order=4]
-#> 
-#> -------------------------------------
-#>      words        word   probability 
-#> ---------------- ------ -------------
-#> hello world wide  web       -0.32    
-#> 
-#> hello world wide range     -2.403    
-#> 
-#> hello world wide  open      -2.97    
-#> -------------------------------------
 ```
 
 ## Credits

@@ -1,0 +1,15 @@
+citHeader("To cite {mscsweblm4r} in publications use:")
+
+citEntry(entry = "Manual",
+  title        = "mscsweblm4r: R Client for the Microsoft Cognitive Services Web Language Model REST API",
+  author       = as.person("Phil Ferriere"),
+  year         = "2016",
+  note         = "R Package",
+  url          = "https://github.com/philferriere/mscsweblm4r",
+
+  textVersion  =
+  paste("Phil Ferriere (2016).",
+        "{mscsweblm4r}: R Client for the Microsoft Cognitive Services Web Language Model REST API.",
+        "R Package.",
+        "https://github.com/philferriere/mscsweblm4r")
+)
