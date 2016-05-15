@@ -4,12 +4,14 @@ May 2016
 
 
 
+[![Build Status](https://api.travis-ci.org/philferriere/mscsweblm4r.png)](https://travis-ci.org/philferriere/mscsweblm4r)
+[![codecov.io](https://codecov.io/github/philferriere/mscsweblm4r/coverage.svg?branch=master)](https://codecov.io/github/philferriere/mscsweblm4r?branch=master)
 
 The Microsoft Cognitive Services (MSCS) website provides several code samples
 that illustrate how to use the awesome Web LM REST API from C#, Java, JavaScript, ObjC, PHP, Python, Ruby,
-and... you guessed it -- if you want to testdrive their service from R, you're
-pretty much on your own. To restore ![](img/SadPanda.png)'s happiness, and allow
-use to evaluate/experiment with Microsoft Research's NLP in R, we've
+and... you guessed it -- if you want to test drive their service from R, you're
+pretty much on your own. To restore ![](https://dl.dropboxusercontent.com/u/5888080/SadPanda.png)'s
+happiness, and allow us to experiment with Microsoft Research's NLP in R, we've
 developed a R interface to a subset of the MSCS REST API.
 
 To use the `{mscsweblm4r}` R package, you **MUST** have a valid [account](https://www.microsoft.com/cognitive-services/en-us/pricing)
@@ -31,8 +33,8 @@ facial, speech and vision recognition; and speech and language understanding.
 The [Web Language Model REST API](https://www.microsoft.com/cognitive-services/en-us/web-language-model-api/documentation)
 provides tools for natural language processing [NLP](https://en.wikipedia.org/wiki/Natural_language_processing).
 
-Per Microsoft's website, this API uses smoothed backoff N-gram language models (
-supporting Markov order up to 5) that were trained on four web-scale American
+Per Microsoft's website, this API uses smoothed Backoff N-gram language models
+(supporting Markov order up to 5) that were trained on four web-scale American
 English corpora collected by Bing (web page body, title, anchor and query).
 
 The MSCS Web LM REST API supports four lookup operations:
@@ -77,7 +79,7 @@ if ("mscsweblm4r" %in% installed.packages()[,"Package"] == FALSE) {
 **This must be done BEFORE the package can load!**
 
 At library attach time, `{mscsweblm4r}` will first check to see if the variable
-`MSCS_WEBLANGUAGEMODEL_CONFIG_FILE` exists in the system environemt. If it does,
+`MSCS_WEBLANGUAGEMODEL_CONFIG_FILE` exists in the system environment. If it does,
 the package will use that as the path to the configuration file.
 
 If `MSCS_WEBLANGUAGEMODEL_CONFIG_FILE` doesn't exist, it will look for the file
@@ -106,7 +108,7 @@ configuration from two Sys env variables instead:
 
 The MSCS Web LM API is a **[RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer)** API. HTTP requests over a network and the
 Internet can fail. Because of congestion, because the web site is down for
-maintenance, because of firewwall configuration issues, etc. There are many
+maintenance, because of firewall configuration issues, etc. There are many
 possible points of failure.
 
 The API can also fail if you've **exhausted your call volume quota** or are **exceeding
@@ -114,7 +116,7 @@ the API calls rate limit**. Unfortunately, MSCS does not expose an API you can q
 if you're about to exceed your quota for instance. The only way you'll know for
 sure is by **looking at the error code** returned after an API call has failed.
 
-Therefore, you must write your R code with failure in mind. Our preffered way is
+Therefore, you must write your R code with failure in mind. Our preferred way is
 to use `tryCatch()`. Its mechanism may appear a bit daunting at first, but it
 is well [documented](http://www.inside-r.org/r-doc/base/signalCondition). We've
 also included many examples, as you'll see below.
@@ -448,6 +450,6 @@ This project is released with a [Contributor Code of Conduct](./CONDUCT.md). By
 
 For more info about the author of this R package, please visit:
 
-[![https://www.linkedin.com/in/philferriere](img/LinkedIn.png)](https://www.linkedin.com/in/philferriere)
+[![https://www.linkedin.com/in/philferriere](https://dl.dropboxusercontent.com/u/5888080/LinkedInDevLead.png)](https://www.linkedin.com/in/philferriere)
 
 

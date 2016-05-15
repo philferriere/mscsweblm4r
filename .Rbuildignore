@@ -6,5 +6,4 @@
 ^README\.Rmd$
 ^README\.html$
 NEWS\.md
-^img
 ^\.bogusmscskeys\.json$
