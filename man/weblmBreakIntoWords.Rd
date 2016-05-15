@@ -13,8 +13,7 @@ are present, they will be interpreted as hard breaks and maintained, except
 for leading or trailing spaces, which will be trimmed. Must be in ASCII format.}
 
 \item{modelToUse}{(character) Which language model to use, supported values:
-"title", "anchor", "query", or "body" (optional,
-default: \sQuote{body})}
+"title", "anchor", "query", or "body" (optional, default: "body")}
 
 \item{orderOfNgram}{(integer) Which order of N-gram to use, supported values:
 1L, 2L, 3L, 4L, or 5L (optional, default: 5L)}
@@ -47,38 +46,38 @@ for details.
    # Break a sentence into words
    textWords <- weblmBreakIntoWords(
      textToBreak = "testforwordbreak", # ASCII only
-     modelToUse = "body",              # Default: "body" out of "title"|"anchor"|"query"|"body"
-     orderOfNgram = 5L,                # Default: 5L out of 1L|2L|3L|4L|5L
+     modelToUse = "body",              # "title"|"anchor"|"query"(default)|"body"
+     orderOfNgram = 5L,                # 1L|2L|3L|4L|5L(default)
      maxNumOfCandidatesReturned = 5L   # Default: 5L
    )
 
    # Class and structure of textWords
    class(textWords)
-   # [1] "weblm"
+   #> [1] "weblm"
 
    str(textWords, max.level = 1)
-   # List of 3
-   #  $ results:'data.frame':  5 obs. of  2 variables:
-   #  $ json   : chr "{"candidates":[{"words":"test for word break","probability":-13.834}, __truncated__ ]}
-   #  $ request:List of 7
-   #   ..- attr(*, "class")= chr "request"
-   #  - attr(*, "class")= chr "weblm"
+   #> List of 3
+   #>  $ results:'data.frame':  5 obs. of  2 variables:
+   #>  $ json   : chr "{"candidates":[{"words":"test for word break", __truncated__ }]}
+   #>  $ request:List of 7
+   #>   ..- attr(*, "class")= chr "request"
+   #>  - attr(*, "class")= chr "weblm"
 
    # Print results
    pandoc.table(textWords$results)
-   # ---------------------------------
-   #       words          probability
-   # ------------------- -------------
-   # test for word break    -13.83
-   #
-   #  test for wordbreak    -14.63
-   #
-   #  testfor word break    -15.94
-   #
-   #  test forword break    -16.72
-   #
-   #   testfor wordbreak    -17.41
-   # ---------------------------------
+   #> ---------------------------------
+   #>       words          probability
+   #> ------------------- -------------
+   #> test for word break    -13.83
+   #>
+   #>  test for wordbreak    -14.63
+   #>
+   #>  testfor word break    -15.94
+   #>
+   #>  test forword break    -16.72
+   #>
+   #>   testfor wordbreak    -17.41
+   #> ---------------------------------
 
  }, error = function(err) {
 

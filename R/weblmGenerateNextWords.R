@@ -38,38 +38,38 @@
 #'    # Generate next words
 #'    wordCandidates <- weblmGenerateNextWords(
 #'      precedingWords = "how are you",  # ASCII only
-#'      modelToUse = "title",            # Default: "body" out of "title"|"anchor"|"query"|"body"
-#'      orderOfNgram = 4L,               # Default: 5L out of 1L|2L|3L|4L|5L
+#'      modelToUse = "title",            # "title"|"anchor"|"query"(default)|"body"
+#'      orderOfNgram = 4L,               # 1L|2L|3L|4L|5L(default)
 #'      maxNumOfCandidatesReturned = 5L  # Default: 5L
 #'    )
 #'
 #'    # Class and structure of wordCandidates
 #'    class(wordCandidates)
-#'    # [1] "weblm"
+#'    #> [1] "weblm"
 #'
 #'    str(wordCandidates, max.level = 1)
-#'    # List of 3
-#'    #  $ results:'data.frame':  5 obs. of  2 variables:
-#'    #  $ json   : chr "{"candidates":[{"word":"doing","probability":-1.105}, __truncated__ ]}
-#'    #  $ request:List of 7
-#'    #   ..- attr(*, "class")= chr "request"
-#'    #  - attr(*, "class")= chr "weblm"
+#'    #> List of 3
+#'    #>  $ results:'data.frame':  5 obs. of  2 variables:
+#'    #>  $ json   : chr "{"candidates":[{"word":"doing","probability":-1.105}, __truncated__ ]}
+#'    #>  $ request:List of 7
+#'    #>   ..- attr(*, "class")= chr "request"
+#'    #>  - attr(*, "class")= chr "weblm"
 #'
 #'    # Print results
 #'    pandoc.table(wordCandidates$results)
-#'    # ---------------------
-#'    #   word    probability
-#'    # ------- -------------
-#'    #   doing     -1.105
-#'    #
-#'    #    in       -1.239
-#'    #
-#'    # feeling     -1.249
-#'    #
-#'    #   going     -1.378
-#'    #
-#'    #   today      -1.43
-#'    # ---------------------
+#'    #> ---------------------
+#'    #>   word    probability
+#'    #> ------- -------------
+#'    #>   doing     -1.105
+#'    #>
+#'    #>    in       -1.239
+#'    #>
+#'    #> feeling     -1.249
+#'    #>
+#'    #>   going     -1.378
+#'    #>
+#'    #>   today      -1.43
+#'    #> ---------------------
 #'
 #'  }, error = function(err) {
 #'
@@ -81,8 +81,8 @@
 
 weblmGenerateNextWords <- function(
   precedingWords,                  # ASCII only
-  modelToUse = "body",             # Default: "body" out of "title"|"anchor"|"query"|"body"
-  orderOfNgram = 5L,               # Default: 5L out of 1L|2L|3L|4L|5L
+  modelToUse = "body",             # "title"|"anchor"|"query"(default)|"body"
+  orderOfNgram = 5L,               # 1L|2L|3L|4L|5L(default)
   maxNumOfCandidatesReturned = 5L  # Default: 5L
   ) {
 

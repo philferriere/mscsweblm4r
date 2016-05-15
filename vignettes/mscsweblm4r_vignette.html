@@ -134,29 +134,29 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="co"># Break a string of concatenated words into individual words</span>
   <span class="kw">weblmBreakIntoWords</span>(
     textToBreak,                      <span class="co"># ASCII only</span>
-    <span class="dt">modelToUse =</span> <span class="st">&quot;body&quot;</span>,              <span class="co"># Default: &quot;body&quot; out of &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;|&quot;body&quot;</span>
-    <span class="dt">orderOfNgram =</span> 5L,                <span class="co"># Default: 5L out of 1L|2L|3L|4L|5L</span>
+    <span class="dt">modelToUse =</span> <span class="st">&quot;body&quot;</span>,              <span class="co"># &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;(default)|&quot;body&quot;</span>
+    <span class="dt">orderOfNgram =</span> 5L,                <span class="co"># 1L|2L|3L|4L|5L(default)</span>
     <span class="dt">maxNumOfCandidatesReturned =</span> 5L   <span class="co"># Default: 5L</span>
   )</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="co"># Get the words most likely to follow a sequence of words</span>
   <span class="kw">weblmGenerateNextWords</span>(
     precedingWords,                  <span class="co"># ASCII only</span>
-    <span class="dt">modelToUse =</span> <span class="st">&quot;title&quot;</span>,            <span class="co"># Default: &quot;body&quot; out of &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;|&quot;body&quot;</span>
-    <span class="dt">orderOfNgram =</span> 4L,               <span class="co"># Default: 5L out of 1L|2L|3L|4L|5L</span>
+    <span class="dt">modelToUse =</span> <span class="st">&quot;title&quot;</span>,            <span class="co"># &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;(default)|&quot;body&quot;</span>
+    <span class="dt">orderOfNgram =</span> 4L,               <span class="co"># 1L|2L|3L|4L|5L(default)</span>
     <span class="dt">maxNumOfCandidatesReturned =</span> 5L  <span class="co"># Default: 5L</span>
   )</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="co"># Calculate the joint probability that a particular sequence of words will appear together</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="co"># Calculate joint probability a particular sequence of words will appear together</span>
   <span class="kw">weblmCalculateJointProbability</span>(
     <span class="dt">inputWords =</span>,                    <span class="co"># ASCII only</span>
-    <span class="dt">modelToUse =</span> <span class="st">&quot;query&quot;</span>,            <span class="co"># Default: &quot;body&quot; out of &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;|&quot;body&quot;</span>
-    <span class="dt">orderOfNgram =</span> 4L                <span class="co"># Default: 5L out of 1L|2L|3L|4L|5L</span>
+    <span class="dt">modelToUse =</span> <span class="st">&quot;query&quot;</span>,            <span class="co"># &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;(default)|&quot;body&quot;</span>
+    <span class="dt">orderOfNgram =</span> 4L                <span class="co"># 1L|2L|3L|4L|5L(default)</span>
   )</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="co"># Calculate the conditional probability that a particular word will follow a given sequence of words</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="co"># Calculate conditional probability a particular word will follow a given sequence of words</span>
   <span class="kw">weblmCalculateConditionalProbability</span>(
     precedingWords,                  <span class="co"># ASCII only</span>
     continuations,                   <span class="co"># ASCII only</span>
-    <span class="dt">modelToUse =</span> <span class="st">&quot;title&quot;</span>,            <span class="co"># Default: &quot;body&quot; out of &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;|&quot;body&quot;</span>
-    <span class="dt">orderOfNgram =</span> 4L                <span class="co"># Default: 5L out of 1L|2L|3L|4L|5L</span>
+    <span class="dt">modelToUse =</span> <span class="st">&quot;title&quot;</span>,            <span class="co"># &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;(default)|&quot;body&quot;</span>
+    <span class="dt">orderOfNgram =</span> 4L                <span class="co"># 1L|2L|3L|4L|5L(default)</span>
   )</code></pre></div>
 <p>These functions return S3 class objects of the class <code>weblm</code>. The <code>weblm</code> object exposes formatted results (in <code>data.frame</code> format), the REST API JSON response (should you care), and the HTTP request (mostly for debugging purposes).</p>
 </div>
@@ -229,8 +229,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <span class="co"># Break a sentence into words</span>
   <span class="kw">weblmBreakIntoWords</span>(
     <span class="dt">textToBreak =</span> <span class="st">&quot;testforwordbreak&quot;</span>, <span class="co"># ASCII only</span>
-    <span class="dt">modelToUse =</span> <span class="st">&quot;body&quot;</span>,              <span class="co"># Default: &quot;body&quot; out of &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;|&quot;body&quot;</span>
-    <span class="dt">orderOfNgram =</span> 5L,                <span class="co"># Default: 5L out of 1L|2L|3L|4L|5L</span>
+    <span class="dt">modelToUse =</span> <span class="st">&quot;body&quot;</span>,              <span class="co"># &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;(default)|&quot;body&quot;</span>
+    <span class="dt">orderOfNgram =</span> 5L,                <span class="co"># 1L|2L|3L|4L|5L(default)</span>
     <span class="dt">maxNumOfCandidatesReturned =</span> 5L   <span class="co"># Default: 5L</span>
   )
 
@@ -263,8 +263,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <span class="co"># Generate next words</span>
   <span class="kw">weblmGenerateNextWords</span>(
     <span class="dt">precedingWords =</span> <span class="st">&quot;how are you&quot;</span>,  <span class="co"># ASCII only</span>
-    <span class="dt">modelToUse =</span> <span class="st">&quot;title&quot;</span>,            <span class="co"># Default: &quot;body&quot; out of &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;|&quot;body&quot;</span>
-    <span class="dt">orderOfNgram =</span> 4L,               <span class="co"># Default: 5L out of 1L|2L|3L|4L|5L</span>
+    <span class="dt">modelToUse =</span> <span class="st">&quot;title&quot;</span>,            <span class="co"># &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;(default)|&quot;body&quot;</span>
+    <span class="dt">orderOfNgram =</span> 4L,               <span class="co"># 1L|2L|3L|4L|5L(default)</span>
     <span class="dt">maxNumOfCandidatesReturned =</span> 5L  <span class="co"># Default: 5L</span>
   )
 
@@ -294,11 +294,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3>Calculate Joint Probability function</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tryCatch</span>({
 
-  <span class="co"># Calculate the joint probability that a particular sequence of words will appear together</span>
+  <span class="co"># Calculate joint probability a particular sequence of words will appear together</span>
   <span class="kw">weblmCalculateJointProbability</span>(
-    <span class="dt">inputWords =</span> <span class="kw">c</span>(<span class="st">&quot;where&quot;</span>, <span class="st">&quot;is&quot;</span>, <span class="st">&quot;San&quot;</span>, <span class="st">&quot;Francisco&quot;</span>, <span class="st">&quot;where is&quot;</span>, <span class="st">&quot;San Francisco&quot;</span>, <span class="st">&quot;where is San Francisco&quot;</span>),  <span class="co"># ASCII only</span>
-    <span class="dt">modelToUse =</span> <span class="st">&quot;query&quot;</span>,                     <span class="co"># Default: &quot;body&quot; out of &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;|&quot;body&quot;</span>
-    <span class="dt">orderOfNgram =</span> 4L                         <span class="co"># Default: 5L out of 1L|2L|3L|4L|5L</span>
+    <span class="dt">inputWords =</span> <span class="kw">c</span>(<span class="st">&quot;where&quot;</span>, <span class="st">&quot;is&quot;</span>, <span class="st">&quot;San&quot;</span>, <span class="st">&quot;Francisco&quot;</span>, <span class="st">&quot;where is&quot;</span>,
+                   <span class="st">&quot;San Francisco&quot;</span>, <span class="st">&quot;where is San Francisco&quot;</span>),  <span class="co"># ASCII only</span>
+    <span class="dt">modelToUse =</span> <span class="st">&quot;query&quot;</span>,                     <span class="co"># &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;(default)|&quot;body&quot;</span>
+    <span class="dt">orderOfNgram =</span> 4L                         <span class="co"># 1L|2L|3L|4L|5L(default)</span>
   )
 
 }, <span class="dt">error =</span> function(err) {
@@ -331,12 +332,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3>Calculate Conditional Probability function</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tryCatch</span>({
 
-  <span class="co"># Calculate the conditional probability that a particular word will follow a given sequence of words</span>
+  <span class="co"># Calculate conditional probability a particular word will follow a given sequence of words</span>
   <span class="kw">weblmCalculateConditionalProbability</span>(
     <span class="dt">precedingWords =</span> <span class="st">&quot;hello world wide&quot;</span>,       <span class="co"># ASCII only</span>
     <span class="dt">continuations =</span> <span class="kw">c</span>(<span class="st">&quot;web&quot;</span>, <span class="st">&quot;range&quot;</span>, <span class="st">&quot;open&quot;</span>), <span class="co"># ASCII only</span>
-    <span class="dt">modelToUse =</span> <span class="st">&quot;title&quot;</span>,                      <span class="co"># Default: &quot;body&quot; out of &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;|&quot;body&quot;</span>
-    <span class="dt">orderOfNgram =</span> 4L                          <span class="co"># Default: 5L out of 1L|2L|3L|4L|5L</span>
+    <span class="dt">modelToUse =</span> <span class="st">&quot;title&quot;</span>,                      <span class="co"># &quot;title&quot;|&quot;anchor&quot;|&quot;query&quot;(default)|&quot;body&quot;</span>
+    <span class="dt">orderOfNgram =</span> 4L                          <span class="co"># 1L|2L|3L|4L|5L(default)</span>
   )
 
 }, <span class="dt">error =</span> function(err) {

@@ -4,6 +4,7 @@ May 2016
 
 
 
+
 The Microsoft Cognitive Services (MSCS) website provides several code samples
 that illustrate how to use the awesome Web LM REST API from C#, Java, JavaScript, ObjC, PHP, Python, Ruby,
 and... you guessed it -- if you want to testdrive their service from R, you're
@@ -164,10 +165,10 @@ The five API calls exposed by `{mscsweblm4r}` are the following:
 ```r
   # Break a string of concatenated words into individual words
   weblmBreakIntoWords(
-    textToBreak,                      # ASCII only
-    modelToUse = "body",              # Default: "body" out of "title"|"anchor"|"query"|"body"
-    orderOfNgram = 5L,                # Default: 5L out of 1L|2L|3L|4L|5L
-    maxNumOfCandidatesReturned = 5L   # Default: 5L
+    textToBreak,                    # ASCII only
+    modelToUse = "body",            # "title"|"anchor"|"query"(default)|"body"
+    orderOfNgram = 5L,              # 1L|2L|3L|4L|5L(default)
+    maxNumOfCandidatesReturned = 5L # Default: 5L
   )
 ```
 
@@ -175,31 +176,31 @@ The five API calls exposed by `{mscsweblm4r}` are the following:
 ```r
   # Get the words most likely to follow a sequence of words
   weblmGenerateNextWords(
-    precedingWords,                  # ASCII only
-    modelToUse = "title",            # Default: "body" out of "title"|"anchor"|"query"|"body"
-    orderOfNgram = 4L,               # Default: 5L out of 1L|2L|3L|4L|5L
-    maxNumOfCandidatesReturned = 5L  # Default: 5L
+    precedingWords,                 # ASCII only
+    modelToUse = "title",           # "title"|"anchor"|"query"(default)|"body"
+    orderOfNgram = 4L,              # 1L|2L|3L|4L|5L(default)
+    maxNumOfCandidatesReturned = 5L # Default: 5L
   )
 ```
 
 
 ```r
-  # Calculate the joint probability that a particular sequence of words will appear together
+  # Calculate joint probability a particular sequence of words will appear together
   weblmCalculateJointProbability(
-    inputWords =,                    # ASCII only
-    modelToUse = "query",            # Default: "body" out of "title"|"anchor"|"query"|"body"
-    orderOfNgram = 4L                # Default: 5L out of 1L|2L|3L|4L|5L
+    inputWords =,                   # ASCII only
+    modelToUse = "query",           # "title"|"anchor"|"query"(default)|"body"
+    orderOfNgram = 4L               # 1L|2L|3L|4L|5L(default)
   )
 ```
 
 
 ```r
-  # Calculate the conditional probability that a particular word will follow a given sequence of words
+  # Calculate conditional probability a particular word will follow a given sequence of words
   weblmCalculateConditionalProbability(
-    precedingWords,                  # ASCII only
-    continuations,                   # ASCII only
-    modelToUse = "title",            # Default: "body" out of "title"|"anchor"|"query"|"body"
-    orderOfNgram = 4L                # Default: 5L out of 1L|2L|3L|4L|5L
+    precedingWords,                 # ASCII only
+    continuations,                  # ASCII only
+    modelToUse = "title",           # "title"|"anchor"|"query"(default)|"body"
+    orderOfNgram = 4L               # 1L|2L|3L|4L|5L(default)
   )
 ```
 
@@ -285,8 +286,8 @@ tryCatch({
   # Break a sentence into words
   weblmBreakIntoWords(
     textToBreak = "testforwordbreak", # ASCII only
-    modelToUse = "body",              # Default: "body" out of "title"|"anchor"|"query"|"body"
-    orderOfNgram = 5L,                # Default: 5L out of 1L|2L|3L|4L|5L
+    modelToUse = "body",              # "title"|"anchor"|"query"(default)|"body"
+    orderOfNgram = 5L,                # 1L|2L|3L|4L|5L(default)
     maxNumOfCandidatesReturned = 5L   # Default: 5L
   )
 
@@ -322,8 +323,8 @@ tryCatch({
   # Generate next words
   weblmGenerateNextWords(
     precedingWords = "how are you",  # ASCII only
-    modelToUse = "title",            # Default: "body" out of "title"|"anchor"|"query"|"body"
-    orderOfNgram = 4L,               # Default: 5L out of 1L|2L|3L|4L|5L
+    modelToUse = "title",            # "title"|"anchor"|"query"(default)|"body"
+    orderOfNgram = 4L,               # 1L|2L|3L|4L|5L(default)
     maxNumOfCandidatesReturned = 5L  # Default: 5L
   )
 
@@ -356,11 +357,12 @@ tryCatch({
 ```r
 tryCatch({
 
-  # Calculate the joint probability that a particular sequence of words will appear together
+  # Calculate joint probability a particular sequence of words will appear together
   weblmCalculateJointProbability(
-    inputWords = c("where", "is", "San", "Francisco", "where is", "San Francisco", "where is San Francisco"),  # ASCII only
-    modelToUse = "query",                     # Default: "body" out of "title"|"anchor"|"query"|"body"
-    orderOfNgram = 4L                         # Default: 5L out of 1L|2L|3L|4L|5L
+    inputWords = c("where", "is", "San", "Francisco", "where is",
+                   "San Francisco", "where is San Francisco"),  # ASCII only
+    modelToUse = "query",                     # "title"|"anchor"|"query"(default)|"body"
+    orderOfNgram = 4L                         # 1L|2L|3L|4L|5L(default)
   )
 
 }, error = function(err) {
@@ -396,12 +398,12 @@ tryCatch({
 ```r
 tryCatch({
 
-  # Calculate the conditional probability that a particular word will follow a given sequence of words
+  # Calculate conditional probability a particular word will follow a given sequence of words
   weblmCalculateConditionalProbability(
     precedingWords = "hello world wide",       # ASCII only
     continuations = c("web", "range", "open"), # ASCII only
-    modelToUse = "title",                      # Default: "body" out of "title"|"anchor"|"query"|"body"
-    orderOfNgram = 4L                          # Default: 5L out of 1L|2L|3L|4L|5L
+    modelToUse = "title",                      # "title"|"anchor"|"query"(default)|"body"
+    orderOfNgram = 4L                          # 1L|2L|3L|4L|5L(default)
   )
 
 }, error = function(err) {

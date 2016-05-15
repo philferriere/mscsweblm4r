@@ -33,31 +33,31 @@ for details.
 
    # Class and structure of modelList
    class(modelList)          # weblm
-   # [1] "weblm"
+   #> [1] "weblm"
 
    str(modelList, max.level = 1)
-   # List of 3
-   #  $ results:'data.frame':  4 obs. of  7 variables:
-   #  $ json   : chr "{"models":[{"corpus":"bing webpage title text 2013-12", __truncated__ }]}
-   #  $ request:List of 7
-   #   ..- attr(*, "class")= chr "request"
-   #  - attr(*, "class")= chr "weblm"
+   #> List of 3
+   #>  $ results:'data.frame':  4 obs. of  7 variables:
+   #>  $ json   : chr "{"models":[{"corpus":"bing webpage title text 2013-12", __truncated__ }]}
+   #>  $ request:List of 7
+   #>   ..- attr(*, "class")= chr "request"
+   #>  - attr(*, "class")= chr "weblm"
 
    # Print partial results
    pandoc.table(modelList$results[1:3])
-   #-------------------------------------------------
-   #            corpus              model   maxOrder
-   #------------------------------ ------- ----------
-   #   bing webpage title text      title      5
-   #           2013-12
-   #
-   #bing webpage body text 2013-12   body      5
-   #
-   # bing web query text 2013-12    query      5
-   #
-   #   bing webpage anchor text    anchor      5
-   #           2013-12
-   #-------------------------------------------------
+   #> -------------------------------------------------
+   #>             corpus              model   maxOrder
+   #> ------------------------------ ------- ----------
+   #>    bing webpage title text      title      5
+   #>            2013-12
+   #>
+   #> bing webpage body text 2013-12   body      5
+   #>
+   #>  bing web query text 2013-12    query      5
+   #>
+   #>    bing webpage anchor text    anchor      5
+   #>            2013-12
+   #> -------------------------------------------------
 
 
  }, error = function(err) {
