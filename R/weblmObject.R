@@ -31,17 +31,17 @@ weblm <- function(results = NULL, json = NULL, request = NULL) {
   structure(list(results = results, json = json, request = request), class = "weblm")
 }
 
-is.weblm <- function(object) {
-  inherits(object, "weblm")
+is.weblm <- function(x) {
+  inherits(x, "weblm")
 }
 
 #' @export
-print.weblm <- function(object, ...) {
+print.weblm <- function(x, ...) {
 
-  cat("weblm [", object$request$url, "]\n", sep = "")
+  cat("weblm [", x$request$url, "]\n", sep = "")
   aintNoVT100NoMo <- panderOptions("table.split.table")
   panderOptions("table.split.table", getOption("width"))
-  pandoc.table(object$results)
+  pandoc.table(x$results)
   panderOptions("table.split.table", aintNoVT100NoMo)
 
 }
