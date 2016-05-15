@@ -19,7 +19,11 @@ output:
 library("knitr")
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
-
+```{r eval=FALSE, echo = FALSE}
+[![Build Status](https://api.travis-ci.org/philferriere/mscsweblm4r.png)](https://travis-ci.org/philferriere/mscsweblm4r)
+[![codecov.io](https://codecov.io/github/philferriere/mscsweblm4r/coverage.svg?branch=master)](https://codecov.io/github/philferriere/mscsweblm4r?branch=master)
+[![CRAN Version](http://www.r-pkg.org/badges/version/mscsweblm4r)](http://cran.rstudio.com/web/packages/mscsweblm4r)
+```
 The Microsoft Cognitive Services (MSCS) website provides several code samples
 that illustrate how to use the awesome Web LM REST API from C#, Java, JavaScript, ObjC, PHP, Python, Ruby,
 and... you guessed it -- if you want to testdrive their service from R, you're
