@@ -1,8 +1,5 @@
 context("testPackageConfig")
 
-if (file.exists("~/.mscskeys.json.inaccessible"))
-  file.rename("~/.mscskeys.json.inaccessible", "~/.mscskeys.json")
-
 # From http://stackoverflow.com/questions/6979917/how-to-unload-a-package-without-restarting-r
 # Usage: detachPackage(mscsweblm4r) or detachPackage("mscsweblm4r", TRUE)
 detachPackage <- function(pkg, character.only = FALSE)
@@ -20,6 +17,12 @@ detachPackage <- function(pkg, character.only = FALSE)
 
 # Method 1: From file set with env var
 test_that("configuring from env-specified file path works", {
+
+  skip_on_cran()
+
+  if (file.exists("~/.mscskeys.json.inaccessible"))
+    file.rename("~/.mscskeys.json.inaccessible", "~/.mscskeys.json")
+
   detachPackage(mscsweblm4r)
 
   Sys.setenv(MSCS_WEBLANGUAGEMODEL_CONFIG_FILE = ".bogusmscskeys.json")
@@ -36,6 +39,9 @@ test_that("configuring from env-specified file path works", {
 
 # Method 2: From sys env
 test_that("configuring from env-specified file path works", {
+
+  skip_on_cran()
+
   detachPackage(mscsweblm4r)
 
   if (file.exists("~/.mscskeys.json"))
@@ -56,6 +62,9 @@ test_that("configuring from env-specified file path works", {
 
 # Method 3: From default file
 test_that("configuring from default file path works", {
+
+  skip_on_cran()
+
   detachPackage(mscsweblm4r)
 
   library(mscsweblm4r)

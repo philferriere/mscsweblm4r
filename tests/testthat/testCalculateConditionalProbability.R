@@ -4,7 +4,11 @@ precedingWords <- "hello world wide"
 continuations <- c("web", "range", "open")
 
 test_that("weblmCalculateConditionalProbability returns expected class types", {
+
+  skip_on_cran()
+
   res <- weblmCalculateConditionalProbability(precedingWords = precedingWords, continuations = continuations, "title", 4L)
+
   expect_that(res, is_a("weblm"))
   expect_that(length(res), equals(3))
   expect_that(res[["request"]], is_a("request"))
@@ -16,6 +20,8 @@ test_that("weblmCalculateConditionalProbability returns expected class types", {
 })
 
 test_that("weblmCalculateConditionalProbability fails gracefully", {
+
+  skip_on_cran()
 
   # precedingWords: bad, other params: good, expect graceful failure
   expect_that(weblmCalculateConditionalProbability(precedingWords = 0, continuations = continuations), throws_error())

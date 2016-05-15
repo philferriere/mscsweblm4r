@@ -1,7 +1,11 @@
 context("testListAvailableModels")
 
 test_that("weblmListAvailableModels returns expected class types", {
+
+  skip_on_cran()
+
   res <- weblmListAvailableModels()
+
   expect_that(res, is_a("weblm"))
   expect_that(length(res), equals(3))
   expect_that(res[["request"]], is_a("request"))
@@ -13,6 +17,9 @@ test_that("weblmListAvailableModels returns expected class types", {
 })
 
 test_that("weblmListAvailableModels fails gracefully", {
+
+  skip_on_cran()
+
   url <- mscsweblm4r:::weblmGetURL()
   key <- mscsweblm4r:::weblmGetKey()
 

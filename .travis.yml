@@ -1,7 +1,9 @@
 language: r
-
-r_packages:
-  - covr
-
+warnings_are_errors: true
+sudo: false
+cache: packages
+env:
+  global:
+  - NOT_CRAN="true"
 after_success:
-  - Rscript -e 'library(covr); codecov()'
+  - Rscript -e 'covr::codecov()'

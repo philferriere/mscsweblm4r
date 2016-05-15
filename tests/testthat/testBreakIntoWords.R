@@ -1,6 +1,9 @@
 context("testBreakIntoWords")
 
 test_that("weblmBreakIntoWords returns expected class type", {
+
+  skip_on_cran()
+
   res <- weblmBreakIntoWords("testforwordbreak")
   expect_that(res, is_a("weblm"))
   expect_that(length(res), equals(3))
@@ -12,6 +15,8 @@ test_that("weblmBreakIntoWords returns expected class type", {
 })
 
 test_that("weblmBreakIntoWords fails gracefully", {
+
+  skip_on_cran()
 
   # textToBreak: bad, other params: good, expect graceful failure
   expect_that(weblmBreakIntoWords(textToBreak = 0), throws_error())

@@ -4,7 +4,11 @@ words <- c("where", "is", "San", "Francisco", "where is",
            "San Francisco", "where is San Francisco")
 
 test_that("weblmCalculateJointProbability returns expected class types", {
+
+  skip_on_cran()
+
   res <- weblmCalculateJointProbability(words, "query", 4L)
+
   expect_that(res, is_a("weblm"))
   expect_that(length(res), equals(3))
   expect_that(res[["request"]], is_a("request"))
@@ -15,6 +19,8 @@ test_that("weblmCalculateJointProbability returns expected class types", {
 })
 
 test_that("weblmCalculateJointProbability fails gracefully", {
+
+  skip_on_cran()
 
   # precedingWords: bad, other params: good, expect graceful failure
   expect_that(weblmCalculateJointProbability(inputWords = 0, "query", 4L), throws_error())
