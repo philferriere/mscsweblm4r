@@ -5,5 +5,8 @@ cache: packages
 env:
   global:
   - NOT_CRAN="true"
+r_github_packages:
+  - jimhester/covr
 after_success:
-  - Rscript -e 'covr::codecov()'
+  - Rscript -e 'library(covr);coveralls()'
+
