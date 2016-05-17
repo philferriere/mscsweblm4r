@@ -2,6 +2,11 @@
 # quick notes:
 #   put all your tests in tests/testthat folder
 #   each test file should start with test and end in .R
+#   since we use secret API keys, don't run the tests on CRAN
+
 library("testthat")
-library("mscsweblm4r")
-test_check("mscsweblm4r")
+
+if (identical(tolower(Sys.getenv("NOT_CRAN")), "true")) {
+  library("mscsweblm4r")
+  test_check("mscsweblm4r")
+}

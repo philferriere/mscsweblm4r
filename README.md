@@ -74,11 +74,12 @@ if ("mscsweblm4r" %in% installed.packages()[,"Package"] == FALSE) {
 }
 ```
 
-## Package Configuration
+## Package Loading and Configuration
 
-**This must be done BEFORE the package can load!**
+After loading `{mscsweblm4r}` with `library()`, you **must** call `weblmInit()`
+before you can call any of the core `{mscsweblm4r}` functions.
 
-At library attach time, `{mscsweblm4r}` will first check to see if the variable
+The `weblmInit()` configuration function will first check to see if the variable
 `MSCS_WEBLANGUAGEMODEL_CONFIG_FILE` exists in the system environment. If it does,
 the package will use that as the path to the configuration file.
 
@@ -97,12 +98,14 @@ If using a file, please make sure it has the following structure:
 }
 ```
 
-If no configuration file was found, `{mscsweblm4r}` will attempt to pick up its
+If no configuration file is found, `weblmInit()` will attempt to pick up its
 configuration from two Sys env variables instead:
 
 `MSCS_WEBLANGUAGEMODEL_URL` - the URL for the Web LM REST API.
 
 `MSCS_WEBLANGUAGEMODEL_KEY` -  your personal Web LM REST API key.
+
+`weblmInit()` needs to be called *only once*, after package load.
 
 ## Error Handling Not Optional
 
@@ -121,15 +124,16 @@ to use `tryCatch()`. Its mechanism may appear a bit daunting at first, but it
 is well [documented](http://www.inside-r.org/r-doc/base/signalCondition). We've
 also included many examples, as you'll see below.
 
-## Package Loading with Error Handling
+## Package Configuration with Error Handling
 
 Here's some sample code that illustrates how to use `tryCatch()`:
 
 
 ```r
+library('mscsweblm4r')
 tryCatch({
 
-  library('mscsweblm4r')
+  weblmInit()
 
 }, error = function(err) {
 
@@ -143,15 +147,13 @@ environment variables, the code above will generate the following output:
 
 
 ```r
-Error : .onAttach failed in attachNamespace() for 'mscsweblm4r', details:
-  call: NULL
-  error: mscsweblm4r: could not find MSCS_WEBLANGUAGEMODEL_KEY or MSCS_WEBLANGUAGEMODEL_URL in Sys env nor locate ~/.mscskeys.json
-[1] "package or namespace load failed for 'mscsweblm4r'"
+[1] "mscsweblm4r: could not load config info from Sys env nor from file"
 ```
 
-Similarly, package load will fail if `{mscsweblm4r}` cannot find the
-`weblanguagemodelkey` key in `.mscskeys.json`, or fails to parse it correctly, etc.
-This is why it is so important to use `tryCatch()`.
+Similarly, `weblmInit()` will fail if `{mscsweblm4r}` cannot find the
+`weblanguagemodelkey` key in `.mscskeys.json`, or fails to parse it correctly,
+etc. This is why it is so important to use `tryCatch()` with all `{mscsweblm4r}`
+functions.
 
 ## Package API
 

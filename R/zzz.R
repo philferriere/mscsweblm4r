@@ -1,8 +1,2 @@
 
-.pkgenv <- new.env(parent = emptyenv())
-
-.onAttach <- function(libname, pkgname) {
-
-  weblmConfigure()
-
-}
+.weblmpkgenv <- new.env(parent = emptyenv())

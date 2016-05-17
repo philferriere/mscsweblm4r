@@ -1,31 +1,51 @@
 
-## The next seven \pkg{mscsweblm4r} internal functions are used to facilitate
-## configuration and assist with error handling:
-##
-## \itemize{
-##  \item API URL configuration - \code{\link{weblmGetURL}}, \code{\link{weblmSetURL}} functions
-##  \item API key configuration - \code{\link{weblmGetKey}}, \code{\link{weblmSetKey}} functions
-##  \item Package configuration file - \code{\link{weblmGetConfigFile}}, \code{\link{weblmSetConfigFile}} functions
-##  \item Httr assist - \code{\link{weblmHttr}} function
-## }
-##
-
-## @title Configures the package.
-##
-## @description This function configures the Microsoft Cognitive Services Web
-## Language Model REST API key and URL by reading them either from a
-## configuration file or environment variables.
-##
-## Do not call this internal function outside this package.
-##
-## It is called automatically at package load time.
-##
-## @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
-##
-## @examples \dontrun{
-##  weblmConfigure()
-## }
-weblmConfigure <- function() {
+#' @title Initializes the \pkg{mscsweblm4r} package.
+#'
+#' @description This function initializes the Microsoft Cognitive Services Web
+#' Language Model REST API key and URL by reading them either from a
+#' configuration file or environment variables.
+#'
+#' This function \strong{MUST} be called right after package load and before calling
+#' any \pkg{mscsweblm4r} core functions, or these functions will fail.
+#'
+#' The \code{\link{weblmInit}} configuration function will first check to see
+#' if the variable \code{MSCS_WEBLANGUAGEMODEL_CONFIG_FILE} exists in the system
+#' environment. If it does, the package will use that as the path to the
+#' configuration file.
+#'
+#' If \code{MSCS_WEBLANGUAGEMODEL_CONFIG_FILE} doesn't exist, it will look for
+#' the file \code{.mscskeys.json} in the current user's home directory (that's
+#' \code{~/.mscskeys.json} on Linux, and something like \code{C:/Users/Phil/Documents/.mscskeys.json}
+#' on Windows). If the file is found, the package will load the API key and URL
+#' from it.
+#'
+#' If using a file, please make sure it has the following structure:
+#'
+#' \preformatted{
+#' {
+#'   "weblanguagemodelurl": "https://api.projectoxford.ai/text/weblm/v1.0/",
+#'   "weblanguagemodelkey": "...MSCS Web Language Model API key goes here..."
+#' }
+#' }
+#'
+#' If no configuration file is found, \code{\link{weblmInit}} will attempt to
+#' pick up its configuration information from two Sys env variables instead:
+#'
+#' \code{MSCS_WEBLANGUAGEMODEL_URL} - the URL for the Web LM REST API.
+#'
+#' \code{MSCS_WEBLANGUAGEMODEL_KEY} -  your personal Web LM REST API key.
+#'
+#' \code{\link{weblmInit}} needs to be called \emph{only once}, after package
+#' load.
+#'
+#' @export
+#'
+#' @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+#'
+#' @examples \dontrun{
+#'  weblmInit()
+#' }
+weblmInit <- function() {
 
   # Get config info from file
   configFile <- weblmGetConfigFile()
@@ -35,16 +55,15 @@ weblmConfigure <- function() {
     weblm <- jsonlite::fromJSON(configFile)
 
     if (is.null(weblm[["weblanguagemodelkey"]])) {
-      assign("weblm", NULL, envir = .pkgenv)
+      assign("weblm", NULL, envir = .weblmpkgenv)
       stop(paste0("mscsweblm4r: Field 'weblanguagemodelkey' either empty or missing from ", configFile), call. = FALSE)
     } else if (is.null(weblm[["weblanguagemodelurl"]])) {
-      assign("weblm", NULL, envir = .pkgenv)
+      assign("weblm", NULL, envir = .weblmpkgenv)
       stop(paste0("mscsweblm4r: Field 'weblanguagemodelurl' either empty or missing from ", configFile), call. = FALSE)
     } else {
       weblm[["weblanguagemodelconfig"]] <- configFile
-      assign("weblm", weblm, envir = .pkgenv)
+      assign("weblm", weblm, envir = .weblmpkgenv)
     }
-    return
 
   } else {
 
@@ -56,14 +75,25 @@ weblmConfigure <- function() {
     )
 
     if (weblm[["weblanguagemodelkey"]] == "" || weblm[["weblanguagemodelurl"]] == "") {
-      assign("weblm", NULL, envir = .pkgenv)
-      stop(paste0("mscsweblm4r: could not find MSCS_WEBLANGUAGEMODEL_KEY or MSCS_WEBLANGUAGEMODEL_URL in Sys env nor locate ", configFile), call. = FALSE)
+      assign("weblm", NULL, envir = .weblmpkgenv)
+      stop("mscsweblm4r: could not load config info from Sys env nor from file", call. = FALSE)
     } else {
-      assign("weblm", weblm, envir = .pkgenv)
+      assign("weblm", weblm, envir = .weblmpkgenv)
     }
 
   }
 }
+
+## The next seven \pkg{mscsweblm4r} internal functions are used to facilitate
+## configuration and assist with error handling:
+##
+## \itemize{
+##  \item API URL configuration - \code{\link{weblmGetURL}}, \code{\link{weblmSetURL}} functions
+##  \item API key configuration - \code{\link{weblmGetKey}}, \code{\link{weblmSetKey}} functions
+##  \item Package configuration file - \code{\link{weblmGetConfigFile}}, \code{\link{weblmSetConfigFile}} functions
+##  \item Httr assist - \code{\link{weblmHttr}} function
+## }
+##
 
 ## @title Retrieves the Microsoft Cognitive Services Web Language Model REST API key.
 ##
@@ -78,8 +108,8 @@ weblmConfigure <- function() {
 ## }
 weblmGetKey <- function() {
 
-  if (!is.null(.pkgenv$weblm))
-    .pkgenv$weblm[["weblanguagemodelkey"]]
+  if (!is.null(.weblmpkgenv$weblm))
+    .weblmpkgenv$weblm[["weblanguagemodelkey"]]
   else
     stop("mscsweblm4r: REST API key not found in package environment.", call. = FALSE)
 
@@ -98,8 +128,8 @@ weblmGetKey <- function() {
 ## }
 weblmGetURL <- function() {
 
-  if (!is.null(.pkgenv$weblm))
-    .pkgenv$weblm[["weblanguagemodelurl"]]
+  if (!is.null(.weblmpkgenv$weblm))
+    .weblmpkgenv$weblm[["weblanguagemodelurl"]]
   else
     stop("mscsweblm4r: REST API URL not found in package environment.", call. = FALSE)
 
@@ -119,13 +149,14 @@ weblmGetURL <- function() {
 ## }
 weblmGetConfigFile <- function() {
 
-  weblanguagemodelconfig = Sys.getenv("MSCS_WEBLANGUAGEMODEL_CONFIG_FILE", "")
-  if (weblanguagemodelconfig == "") {
-    if (!is.null(.pkgenv$weblm))
-      .pkgenv$weblm[["weblanguagemodelconfig"]]
-    else
-      "~/.mscskeys.json"
-  } else {
+  if (!is.null(.weblmpkgenv$weblm))
+    .weblmpkgenv$weblm[["weblanguagemodelconfig"]]
+  else {
+    weblanguagemodelconfig = Sys.getenv("MSCS_WEBLANGUAGEMODEL_CONFIG_FILE", "")
+    if (weblanguagemodelconfig == "") {
+      if (file.exists("~/.mscskeys.json"))
+        weblanguagemodelconfig = "~/.mscskeys.json"
+    }
     weblanguagemodelconfig
   }
 
@@ -148,8 +179,9 @@ weblmGetConfigFile <- function() {
 ## }
 weblmSetKey <- function(key) {
 
-  if (!is.null(.pkgenv$weblm))
-    .pkgenv$weblm[["weblanguagemodelkey"]] <- key
+  if (!is.null(.weblmpkgenv$weblm)) {
+    .weblmpkgenv$weblm[["weblanguagemodelkey"]] <- key
+  }
   else
     stop("mscsweblm4r: The package wasn't initialized properly.", call. = FALSE)
 
@@ -172,8 +204,8 @@ weblmSetKey <- function(key) {
 ## }
 weblmSetURL <- function(url) {
 
-  if (!is.null(.pkgenv$weblm))
-    .pkgenv$weblm[["weblanguagemodelurl"]] <- url
+  if (!is.null(.weblmpkgenv$weblm))
+    .weblmpkgenv$weblm[["weblanguagemodelurl"]] <- url
   else
     stop("mscsweblm4r: The package wasn't initialized properly.", call. = FALSE)
 
@@ -196,8 +228,8 @@ weblmSetURL <- function(url) {
 ## }
 weblmSetConfigFile <- function(path) {
 
-  if (!is.null(.pkgenv$weblm))
-    .pkgenv$weblm[["weblanguagemodelconfig"]] <- path
+  if (!is.null(.weblmpkgenv$weblm))
+    .weblmpkgenv$weblm[["weblanguagemodelconfig"]] <- path
   else
     stop("mscsweblm4r: The package wasn't initialized properly.", call. = FALSE)
 

@@ -1,5 +1,12 @@
 context("testBreakIntoWords")
 
+if (!("package:mscsweblm4r" %in% search())) {
+  library("mscsweblm4r")
+  weblmInit()
+} else {
+  weblmInit()
+}
+
 test_that("weblmBreakIntoWords returns expected class type", {
 
   skip_on_cran()

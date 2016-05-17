@@ -7,13 +7,15 @@
 #' Once you have an account, Microsoft will provide you with a (free) API key
 #' you can use with this package.
 #'
-#' @section Package Configuration:
+#' @section Package Loading and Configuration:
 #'
-#' \emph{**This must be done BEFORE the package can load!**}
+#' After loading the \pkg{mscsweblm4r} package with the \code{library()} function,
+#' you must call the \code{\link{weblmInit}} before you can call any of
+#' the core \pkg{mscsweblm4r} functions.
 #'
-#' At library attach time, \pkg{mscsweblm4r} will first check to see if the
-#' variable \code{MSCS_WEBLANGUAGEMODEL_CONFIG_FILE} exists in the system
-#' environemt. If it does, the package will use that as the path to the
+#' The \code{\link{weblmInit}} configuration function will first check to see
+#' if the variable \code{MSCS_WEBLANGUAGEMODEL_CONFIG_FILE} exists in the system
+#' environment. If it does, the package will use that as the path to the
 #' configuration file.
 #'
 #' If \code{MSCS_WEBLANGUAGEMODEL_CONFIG_FILE} doesn't exist, it will look for
@@ -31,8 +33,8 @@
 #' }
 #' }
 #'
-#' If no configuration file was found, \pkg{mscsweblm4r} will attempt to pick up
-#' its configuration from two Sys env variables instead:
+#' If no configuration file is found, \code{\link{weblmInit}} will attempt to
+#' pick up its configuration information from two Sys env variables instead:
 #'
 #' \code{MSCS_WEBLANGUAGEMODEL_URL} - the URL for the Web LM REST API.
 #'
@@ -76,6 +78,10 @@
 #'  \item Sequence completions - \code{\link{weblmGenerateNextWords}} function
 #'  \item Models list - \code{\link{weblmListAvailableModels}} function
 #' }
+#'
+#' The \code{\link{weblmInit}} configuration function is used to set the REST
+#' API URL and the private API key. It needs to be called \emph{only once},
+#' after package load, or the core functions will not work properly.
 #'
 #' @section S3 Object of the Class \code{\link{weblm}}:
 #'
