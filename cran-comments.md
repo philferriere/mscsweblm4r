@@ -25,15 +25,23 @@ Per [this comment on SO](http://stackoverflow.com/a/23831508), it appears safe t
   
 Per [Wikipedia](https://en.wikipedia.org/wiki/Application_programming_interface), we believe this spelling to be correct.
 
-This is a re-submission to address Kurt Hornik's 2 requests re: our original submission:
+Although v. 0.1.0 of this package was approved yesterday, we are requesting a re-submission to fix the following issue with DESCRIPTION:
 
-1/ In DESCRIPTION, we replaced "Maintainer: MSCS4R Maintainer <mscs4rmaintainer@gmail.com>" with "Maintainer: Phil Ferriere <pferriere@hotmail.com>"
+1/ We had to replace: 
 
-2/ In DESCRIPTION, we replaced the unquoted, possibly mispelled word "mscsweblm" with "this package"
+Author: person("Phil", "Ferriere", email="pferriere@hotmail.com", role = c("aut", "cre"))
+
+with:
+
+Authors@R: person("Phil", "Ferriere", email="pferriere@hotmail.com", role = c("aut", "cre"))
+    
+for it to display correctly.
+
+2/ As allowed in the "Re-submission" section of the "CRAN Repository Policy" document, we request a 'same-version update' as the changes to the package do not affect any core R code and the package was only released a day ago.
 
 R CMD check tests were rerun in all test environments listed at the top of this note.
 
-Thank you for your help, Kurt.
+Thank you for your help and patience.
 
 Regards,
 Phil Ferriere <pferriere@hotmail.com>
