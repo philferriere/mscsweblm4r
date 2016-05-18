@@ -4,7 +4,7 @@ May 2016
 
 [![Build Status](https://api.travis-ci.org/philferriere/mscsweblm4r.png)](https://travis-ci.org/philferriere/mscsweblm4r)
 [![codecov.io](https://codecov.io/github/philferriere/mscsweblm4r/coverage.svg?branch=master)](https://codecov.io/github/philferriere/mscsweblm4r?branch=master)
-[![CRAN Version](http://www.r-pkg.org/badges/version/mscsweblm4r)](https://cran.rstudio.com/web/packages/mscsweblm4r/)
+[![CRAN Version](http://www.r-pkg.org/badges/version/mscsweblm4r)](https://cran.r-project.org/package=mscsweblm4r)
 
 The Microsoft Cognitive Services (MSCS) website provides several code samples
 that illustrate how to use the awesome Web LM REST API from C#, Java, JavaScript, ObjC, PHP, Python, Ruby,
