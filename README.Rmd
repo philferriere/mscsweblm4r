@@ -32,8 +32,9 @@ developed a R interface to a subset of the MSCS REST API.
 To use the `{mscsweblm4r}` R package, you **MUST** have a valid [account](https://www.microsoft.com/cognitive-services/en-us/pricing)
 with Microsoft Cognitive Services. Once you have an account, Microsoft will
 provide you with an [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key).
-This key will be listed under your [subscriptions](https://www.microsoft.com/cognitive-services/en-US/subscriptions).
-After you've configured `{mscsweblm4r}` with you API key, you will be able to
+This key will be listed under your subscriptions.
+
+After you've configured `{mscsweblm4r}` with your API key, you will be able to
 call the Web LM REST API from R, up to your maximum number of transactions per
 month and per minute.
 

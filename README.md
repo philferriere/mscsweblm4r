@@ -2,10 +2,9 @@
 Phil Ferriere  
 May 2016  
 
-
-
 [![Build Status](https://api.travis-ci.org/philferriere/mscsweblm4r.png)](https://travis-ci.org/philferriere/mscsweblm4r)
 [![codecov.io](https://codecov.io/github/philferriere/mscsweblm4r/coverage.svg?branch=master)](https://codecov.io/github/philferriere/mscsweblm4r?branch=master)
+[![CRAN Version](http://www.r-pkg.org/badges/version/mscsweblm4r)](http://cran.rstudio.com/web/packages/mscsweblm4r)
 
 The Microsoft Cognitive Services (MSCS) website provides several code samples
 that illustrate how to use the awesome Web LM REST API from C#, Java, JavaScript, ObjC, PHP, Python, Ruby,
@@ -17,8 +16,9 @@ developed a R interface to a subset of the MSCS REST API.
 To use the `{mscsweblm4r}` R package, you **MUST** have a valid [account](https://www.microsoft.com/cognitive-services/en-us/pricing)
 with Microsoft Cognitive Services. Once you have an account, Microsoft will
 provide you with an [API key](https://en.wikipedia.org/wiki/Application_programming_interface_key).
-This key will be listed under your [subscriptions](https://www.microsoft.com/cognitive-services/en-US/subscriptions).
-After you've configured `{mscsweblm4r}` with you API key, you will be able to
+This key will be listed under your subscriptions.
+
+After you've configured `{mscsweblm4r}` with your API key, you will be able to
 call the Web LM REST API from R, up to your maximum number of transactions per
 month and per minute.
 
