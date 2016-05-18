@@ -112,6 +112,6 @@
 #' @importFrom pander pandoc.table panderOptions
 #' @name mscsweblm4r
 #' @docType package
-#' @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+#' @author Phil Ferriere \email{pferriere@hotmail.com}
 #' @keywords package
 NULL

@@ -14,7 +14,7 @@
 #'
 #' @family weblm methods
 #'
-#' @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+#' @author Phil Ferriere \email{pferriere@hotmail.com}
 NULL
 
 weblm <- function(results = NULL, json = NULL, request = NULL) {

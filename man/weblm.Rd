@@ -14,6 +14,6 @@ response, and the HTTP request:
 }
 }
 \author{
-Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+Phil Ferriere \email{pferriere@hotmail.com}
 }
 

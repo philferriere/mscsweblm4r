@@ -1,4 +1,4 @@
-I have read and agree to the the CRAN policies at
+I have read and agree to the CRAN policies at
 http://cran.r-project.org/web/packages/policies.html
 
 ## R CMD check test environments
@@ -16,12 +16,11 @@ R CMD check results
 0 errors | 0 warnings | 1 note
 
 * checking CRAN incoming feasibility ... NOTE
-Maintainer: 'MSCS4R Maintainer <mscs4rmaintainer@gmail.com>'
+Maintainer: 'MSCS4R Maintainer <pferriere@hotmail.com>'
 
 Per [this comment on SO](http://stackoverflow.com/a/23831508), it appears safe to ignore this note.
 
 This is a new submission.
 
-Thanks!
-Phil Ferriere
-MSCS4R Maintainer <mscs4rmaintainer@gmail.com>
+Regards,
+Phil Ferriere <pferriere@hotmail.com>

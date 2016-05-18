@@ -19,7 +19,7 @@
 #' model, the name of the model, the max N-gram order supported, and a list of
 #' Web Language Model REST API methods supported by each model.
 #'
-#' @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+#' @author Phil Ferriere \email{pferriere@hotmail.com}
 #'
 #' @examples \dontrun{
 #'  tryCatch({

@@ -32,7 +32,7 @@
 #' the \code{results} dataframe inside this object. The dataframe contains the
 #' candidate breakdowns and their log(probability).
 #'
-#' @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+#' @author Phil Ferriere \email{pferriere@hotmail.com}
 #'
 #' @examples \dontrun{
 #'  tryCatch({

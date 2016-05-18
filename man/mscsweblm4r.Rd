@@ -120,7 +120,7 @@ mechanism may appear a bit daunting at first, but it is well documented at \url{
 We use it in many of the code examples.
 }
 \author{
-Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+Phil Ferriere \email{pferriere@hotmail.com}
 }
 \keyword{package}
 

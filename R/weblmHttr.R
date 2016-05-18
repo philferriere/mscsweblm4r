@@ -11,7 +11,7 @@
 ##
 ## @return An S3 object of the class \code{response}.
 ##
-## @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+## @author Phil Ferriere \email{pferriere@hotmail.com}
 
 weblmHttr <- function(verb, method, query = NULL, body = NULL) {
 

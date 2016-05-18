@@ -4,14 +4,14 @@ Title: R Client for the Microsoft Cognitive Services Web Language Model REST API
 Version: 0.1.0
 Author: person("Phil", "Ferriere", email="pferriere@hotmail.com",
     role = c("aut", "cre"))
-Maintainer: MSCS4R Maintainer <mscs4rmaintainer@gmail.com>
+Maintainer: Phil Ferriere <pferriere@hotmail.com>
 Description: R Client for the Microsoft Cognitive Services Web Language Model
     REST API, including Break Into Words, Calculate Conditional
     Probability, Calculate Joint Probability, Generate Next Words, and List
     Available Models. A valid account MUST be registered at the Microsoft
     Cognitive Services website (https://www.microsoft.com/cognitive-services/)
-    in order to obtain a (free) API key. Without an API key, the mscsweblm4r
-    package will not work properly.
+    in order to obtain a (free) API key. Without an API key, this package will
+    not work properly.
 License: MIT + file LICENSE
 URL: https://github.com/philferriere/mscsweblm4r
 BugReports: http://www.github.com/philferriere/mscsweblm4r/issues
@@ -20,7 +20,7 @@ Imports: methods, httr, jsonlite, pander
 Suggests: knitr, rmarkdown, testthat
 SystemRequirements: A valid account MUST be registered with Microsoft's
     Cognitive Services website (https://www.microsoft.com/cognitive-services/)
-    in order to obtain a (free) API key. Without an API key, the mscsweblm4r
-    package will not work properly.
+    in order to obtain a (free) API key. Without an API key, this package will
+    not work properly.
 NeedsCompilation: no
 RoxygenNote: 5.0.1

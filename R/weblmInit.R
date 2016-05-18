@@ -40,7 +40,7 @@
 #'
 #' @export
 #'
-#' @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+#' @author Phil Ferriere \email{pferriere@hotmail.com}
 #'
 #' @examples \dontrun{
 #'  weblmInit()
@@ -101,7 +101,7 @@ weblmInit <- function() {
 ##
 ## @return A character string with the value of the API key.
 ##
-## @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+## @author Phil Ferriere \email{pferriere@hotmail.com}
 ##
 ## @examples \dontrun{
 ##  weblmGetKey()
@@ -121,7 +121,7 @@ weblmGetKey <- function() {
 ##
 ## Do not call this internal function outside this package.
 ##
-## @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+## @author Phil Ferriere \email{pferriere@hotmail.com}
 ##
 ## @examples \dontrun{
 ##  weblmGetURL()
@@ -142,7 +142,7 @@ weblmGetURL <- function() {
 ##
 ## Do not call this internal function outside this package.
 ##
-## @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+## @author Phil Ferriere \email{pferriere@hotmail.com}
 ##
 ## @examples \dontrun{
 ##  weblmGetConfigFile()
@@ -172,7 +172,7 @@ weblmGetConfigFile <- function() {
 ##
 ## @param key (character) REST API key to use
 ##
-## @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+## @author Phil Ferriere \email{pferriere@hotmail.com}
 ##
 ## @examples \dontrun{
 ##  mscsweblm4r:::weblmSetKey("invalid-key")
@@ -197,7 +197,7 @@ weblmSetKey <- function(key) {
 ##
 ## @param url (character) REST API URL to use
 ##
-## @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+## @author Phil Ferriere \email{pferriere@hotmail.com}
 ##
 ## @examples \dontrun{
 ##  mscsweblm4r:::weblmSetURL("invalid-URL")
@@ -221,7 +221,7 @@ weblmSetURL <- function(url) {
 ##
 ## @param path (character) File path for the configuration file
 ##
-## @author Phil Ferriere \email{mscs4rmaintainer@gmail.com}
+## @author Phil Ferriere \email{pferriere@hotmail.com}
 ##
 ## @examples \dontrun{
 ##  weblmSetConfigFile("invalid-path")
