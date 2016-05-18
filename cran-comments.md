@@ -16,11 +16,15 @@ R CMD check results
 0 errors | 0 warnings | 1 note
 
 * checking CRAN incoming feasibility ... NOTE
-Maintainer: 'MSCS4R Maintainer <pferriere@hotmail.com>'
+Maintainer: 'Phil Ferriere <pferriere@hotmail.com>'
 
 Per [this comment on SO](http://stackoverflow.com/a/23831508), it appears safe to ignore this note.
 
-This is a new submission.
+This is a re-submission to address Kurt Hornik's 2 requests re: our original submission:
+
+1/ In DESCRIPTION, we replaced "Maintainer: MSCS4R Maintainer <mscs4rmaintainer@gmail.com>" with "Maintainer: Phil Ferriere <pferriere@hotmail.com>"
+
+2/ In DESCRIPTION, we replaced the unquoted, possibly mispelled word "mscsweblm" with "this package"
 
 Regards,
 Phil Ferriere <pferriere@hotmail.com>
