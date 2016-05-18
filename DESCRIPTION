@@ -2,7 +2,7 @@ Package: mscsweblm4r
 Type: Package
 Title: R Client for the Microsoft Cognitive Services Web Language Model REST API
 Version: 0.1.0
-Author: person("Phil", "Ferriere", email="pferriere@hotmail.com",
+Authors@R: person("Phil", "Ferriere", email="pferriere@hotmail.com",
     role = c("aut", "cre"))
 Maintainer: Phil Ferriere <pferriere@hotmail.com>
 Description: R Client for the Microsoft Cognitive Services Web Language Model
