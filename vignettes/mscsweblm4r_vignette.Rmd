@@ -278,3 +278,7 @@ tryCatch({
 
 })
 ```
+
+## Demo Application
+
+A test/demo Shiny web application is available [here](https://github.com/philferriere/mscsshiny)

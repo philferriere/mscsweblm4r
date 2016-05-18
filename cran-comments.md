@@ -13,21 +13,27 @@ R CMD check results
 
 ## R CMD check test results on win-builder
 R CMD check results
-0 errors | 0 warnings | 1 note
-
-* checking CRAN incoming feasibility ... NOTE
-Maintainer: 'Phil Ferriere <pferriere@hotmail.com>'
-
-Per [this comment on SO](http://stackoverflow.com/a/23831508), it appears safe to ignore this note.
+0 errors | 0 warnings | 0 notes
 
 * Possibly mis-spelled words in DESCRIPTION:
   API (4:14, 10:10, 14:33, 14:53)
   
 Per [Wikipedia](https://en.wikipedia.org/wiki/Application_programming_interface), we believe this spelling to be correct.
 
-Although v. 0.1.0 of this package was approved yesterday, we are requesting a re-submission to fix the following issue with DESCRIPTION:
+* checking CRAN incoming feasibility ... WARNING
+Maintainer: 'Phil Ferriere <pferriere@hotmail.com>'
 
-1/ We had to replace: 
+Insufficient package version (submitted: 0.1.0, existing: 0.1.0)
+
+* Uwe Ligges request 1: increase the version number
+
+-> Version was bumped from 0.1.0 to 0.1.1
+
+* Uwe Ligges request 2: enclose the URL in <> rather than ()
+
+-> We replaced (https://www.microsoft.com/cognitive-services/) with <https://www.microsoft.com/cognitive-services/> in DESCRIPTION
+
+* Finally, we had to replace: 
 
 Author: person("Phil", "Ferriere", email="pferriere@hotmail.com", role = c("aut", "cre"))
 
@@ -36,8 +42,6 @@ with:
 Authors@R: person("Phil", "Ferriere", email="pferriere@hotmail.com", role = c("aut", "cre"))
     
 for it to display correctly.
-
-2/ As allowed in the "Re-submission" section of the "CRAN Repository Policy" document, we request a 'same-version update' as the changes to the package do not affect any core R code and the package was only released a day ago.
 
 R CMD check tests were rerun in all test environments listed at the top of this note.
 

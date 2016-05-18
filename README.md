@@ -22,6 +22,8 @@ After you've configured `{mscsweblm4r}` with your API key, you will be able to
 call the Web LM REST API from R, up to your maximum number of transactions per
 month and per minute.
 
+> Note: A test/demo Shiny web application is available [here](https://github.com/philferriere/mscsshiny).
+
 ## What's the Web LM REST API?
 
 [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services/en-us/documentation)
