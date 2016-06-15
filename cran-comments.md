@@ -20,27 +20,9 @@ R CMD check results
   
 Per [Wikipedia](https://en.wikipedia.org/wiki/Application_programming_interface), we believe this spelling to be correct.
 
-* We had to replace: 
+R CMD check tests were run in all test environments listed at the top of this note.
 
-Author: person("Phil", "Ferriere", email="pferriere@hotmail.com", role = c("aut", "cre"))
-
-with:
-
-Authors@R: person("Phil", "Ferriere", email="pferriere@hotmail.com", role = c("aut", "cre"))
-    
-for it to display correctly.
-
-* Uwe Ligges request 1: increase the version number
-
--> Version was bumped from 0.1.0 to 0.1.1
-
-* Uwe Ligges request 2: enclose the URL in <> rather than ()
-
--> We replaced (https://www.microsoft.com/cognitive-services/) with <https://www.microsoft.com/cognitive-services/> in DESCRIPTION
-
-R CMD check tests were rerun in all test environments listed at the top of this note.
-
-Thank you for your help and patience.
+Thank you for your help.
 
 Regards,
 Phil Ferriere <pferriere@hotmail.com>

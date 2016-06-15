@@ -1,6 +1,6 @@
 context("testGenerateNextWords")
 
-test_that("weblmGenerateNextWords returns expected class types", {
+test_that("weblmGenerateNextWords returns expected result structure", {
 
   skip_on_cran()
 
@@ -15,34 +15,34 @@ test_that("weblmGenerateNextWords returns expected class types", {
   expect_that(names(res[["results"]])[2], equals("probability"))
 })
 
-test_that("weblmGenerateNextWords fails gracefully", {
+test_that("weblmGenerateNextWords fails with an error", {
 
   skip_on_cran()
 
-  # precedingWords: bad, other params: good, expect graceful failure
+  # precedingWords: bad, other params: good, expect error
   expect_that(weblmGenerateNextWords(precedingWords = 0, "title"), throws_error())
 
-  # modelToUse: bad, other params: good, expect graceful failure
+  # modelToUse: bad, other params: good, expect error
   expect_that(weblmGenerateNextWords("how are you", modelToUse = "invalid-model"), throws_error())
 
-  # orderOfNgram: bad, other params: good, expect graceful failure
+  # orderOfNgram: bad, other params: good, expect error
   expect_that(weblmGenerateNextWords("how are you", orderOfNgram = -1), throws_error())
 
-  # maxNumOfCandidatesReturned: bad, other params: good, expect graceful failure
+  # maxNumOfCandidatesReturned: bad, other params: good, expect error
   expect_that(weblmGenerateNextWords("how are you", maxNumOfCandidatesReturned = -1), throws_error())
 
   url <- mscsweblm4r:::weblmGetURL()
   key <- mscsweblm4r:::weblmGetKey()
 
-  # URL: good, key: bad, expect graceful failure
+  # URL: good, key: bad, expect error
   mscsweblm4r:::weblmSetKey("invalid-key")
   expect_that(weblmGenerateNextWords("how are you", "title"), throws_error())
 
-  # URL: bad, key: bad, expect graceful failure
+  # URL: bad, key: bad, expect error
   mscsweblm4r:::weblmSetURL("invalid-URL")
   expect_that(weblmGenerateNextWords("how are you", "title"), throws_error())
 
-  # URL: bad, key: good, expect graceful failure
+  # URL: bad, key: good, expect error
   mscsweblm4r:::weblmSetKey(key)
   expect_that(weblmGenerateNextWords("how are you", "title"), throws_error())
 

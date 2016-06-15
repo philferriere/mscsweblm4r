@@ -9,4 +9,8 @@
 .Rproj.user/
 .Ruserdata
 .DS_Store
+
+# Ignore backup code files
+bak/
+.bak
 .Rproj.user

@@ -166,7 +166,7 @@ weblmGetConfigFile <- function() {
 ##
 ## @description This function sets the Microsoft Cognitive Services Web Language
 ## Model REST API key. It is only used for testing purposes, to make sure that
-## the package fails gracefully when using an invalid key.
+## the package fails with an error when using an invalid key.
 ##
 ## Do not call this internal function outside this package.
 ##
@@ -191,7 +191,7 @@ weblmSetKey <- function(key) {
 ##
 ## @description This function sets the Microsoft Cognitive Services Web Language
 ## Model REST API URL. It is only used for testing purposes, to make sure that
-## the package fails gracefully when the URL is misconfigured.
+## the package fails with an error when the URL is misconfigured.
 ##
 ## Do not call this internal function outside this package.
 ##

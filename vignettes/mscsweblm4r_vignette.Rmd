@@ -20,6 +20,29 @@ knitr::opts_chunk$set(
 )
 ```
 
+## What's the Web LM REST API?
+
+[Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services/en-us/documentation)
+-- formerly known as Project Oxford -- are a set of APIs, SDKs and services
+that developers can use to add [AI](https://en.wikipedia.org/wiki/Artificial_intelligence)
+features to their apps. Those features include emotion and video detection;
+facial, speech and vision recognition; and speech and language understanding.
+
+The [Web Language Model REST API](https://www.microsoft.com/cognitive-services/en-us/web-language-model-api/documentation)
+provides tools for natural language processing [NLP](https://en.wikipedia.org/wiki/Natural_language_processing).
+
+Per Microsoft's website, this API uses smoothed Backoff N-gram language models
+(supporting Markov order up to 5) that were trained on four web-scale American
+English corpora collected by Bing (web page body, title, anchor and query).
+
+The MSCS Web LM REST API supports the following lookup operations:
+
+* Calculate the joint probability that a sequence of words will appear together.
+* Compute the conditional probability that a specific word will follow an existing sequence of words.
+* Get the list of words (completions) most likely to follow a given sequence of words.
+* Insert spaces into a string of words adjoined together without any spaces (hashtags, URLs, etc.).
+* Retrieve the list of supported language models.
+
 ## Package Installation
 
 You can either install the latest **stable** version from CRAN:
@@ -74,12 +97,12 @@ configuration from two Sys env variables instead:
 
 `weblmInit()` needs to be called *only once*, after package load.
 
-## Error Handling Not Optional
+## Error Handling
 
-The MSCS Web LM API is a **[RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer)** API. HTTP requests over a network and the
-Internet can fail. Because of congestion, because the web site is down for
-maintenance, because of firewall configuration issues, etc. There are many
-possible points of failure.
+The MSCS Web LM API is a **[RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer)** API.
+HTTP requests over a network and the Internet can fail. Because of congestion,
+because the web site is down for maintenance, because of firewall
+configuration issues, etc. There are many possible points of failure.
 
 The API can also fail if you've **exhausted your call volume quota** or are **exceeding
 the API calls rate limit**. Unfortunately, MSCS does not expose an API you can query to check
@@ -282,3 +305,13 @@ tryCatch({
 ## Demo Application
 
 A test/demo Shiny web application is available [here](https://github.com/philferriere/mscsshiny)
+
+## Related Microsoft Cognitive Services Packages
+
+`{mscstexta4r}`, a R Client for the Microsoft Cognitive Services **Text
+Analytics** REST API, is also available on [CRAN](https://cran.r-project.org/web/packages/mscstexta4r/index.html)
+
+## Credits
+
+All Microsoft Cognitive Services components are Copyright © Microsoft.
+

@@ -39,19 +39,13 @@ Per Microsoft's website, this API uses smoothed Backoff N-gram language models
 (supporting Markov order up to 5) that were trained on four web-scale American
 English corpora collected by Bing (web page body, title, anchor and query).
 
-The MSCS Web LM REST API supports four lookup operations:
+The MSCS Web LM REST API supports the following lookup operations:
 
-* Joint (log10) probability of a sequence of words.
-* Conditional (log10) probability of one word given a sequence of preceding words.
-* List of words (completions) most likely to follow a given sequence of words.
-* Word breaking of strings that contain no spaces.
-
-## Package Status
-
-This package is certainly functional. It's also the first time it is available
-on CRAN. Therefore, if you observe unexpected behaviors (a.k.a. bugs), please be
-kind enough to submit a bug report on GitHub (not via email) with a minimal
-reproducible example.
+* Calculate the joint probability that a sequence of words will appear together.
+* Compute the conditional probability that a specific word will follow an existing sequence of words.
+* Get the list of words (completions) most likely to follow a given sequence of words.
+* Insert spaces into a string of words adjoined together without any spaces (hashtags, URLs, etc.).
+* Retrieve the list of supported language models.
 
 ## Package Installation
 
@@ -111,10 +105,10 @@ configuration from two Sys env variables instead:
 
 ## Error Handling Not Optional
 
-The MSCS Web LM API is a **[RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer)** API. HTTP requests over a network and the
-Internet can fail. Because of congestion, because the web site is down for
-maintenance, because of firewall configuration issues, etc. There are many
-possible points of failure.
+The MSCS Web LM API is a **[RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer)** API.
+HTTP requests over a network and the Internet can fail. Because of congestion,
+because the web site is down for maintenance, because of firewall configuration
+issues, etc. There are many possible points of failure.
 
 The API can also fail if you've **exhausted your call volume quota** or are **exceeding
 the API calls rate limit**. Unfortunately, MSCS does not expose an API you can query to check
@@ -438,6 +432,11 @@ All Microsoft Cognitive Services components are Copyright © Microsoft.
 Nods go to [\@eddelbuettel](https://github.com/eddelbuettel) and [\@sckott](https://github.com/sckott)
 for creating {RPushbullet} and {ckanr}, respectively. We peeked at their package
 code for reference/inspiration.
+
+## Related Microsoft Cognitive Services Packages
+
+`{mscstexta4r}`, a R Client for the Microsoft Cognitive Services **Text Analytics**
+REST API, is also available on [CRAN](https://cran.r-project.org/web/packages/mscstexta4r/index.html)
 
 ## Meta
 

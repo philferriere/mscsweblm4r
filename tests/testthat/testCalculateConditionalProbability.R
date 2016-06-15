@@ -3,7 +3,7 @@ context("testCalculateConditionalProbability")
 precedingWords <- "hello world wide"
 continuations <- c("web", "range", "open")
 
-test_that("weblmCalculateConditionalProbability returns expected class types", {
+test_that("weblmCalculateConditionalProbability returns expected result structure", {
 
   skip_on_cran()
 
@@ -19,34 +19,34 @@ test_that("weblmCalculateConditionalProbability returns expected class types", {
   expect_that(names(res[["results"]])[3], equals("probability"))
 })
 
-test_that("weblmCalculateConditionalProbability fails gracefully", {
+test_that("weblmCalculateConditionalProbability fails with an error", {
 
   skip_on_cran()
 
-  # precedingWords: bad, other params: good, expect graceful failure
+  # precedingWords: bad, other params: good, expect error
   expect_that(weblmCalculateConditionalProbability(precedingWords = 0, continuations = continuations), throws_error())
 
-  # continuations: bad, other params: good, expect graceful failure
+  # continuations: bad, other params: good, expect error
   expect_that(weblmCalculateConditionalProbability(precedingWords = precedingWords, continuations = 0), throws_error())
 
-  # modelToUse: bad, other params: good, expect graceful failure
+  # modelToUse: bad, other params: good, expect error
   expect_that(weblmCalculateConditionalProbability(precedingWords = precedingWords, continuations = continuations, modelToUse = "invalid-model"), throws_error())
 
-  # orderOfNgram: bad, other params: good, expect graceful failure
+  # orderOfNgram: bad, other params: good, expect error
   expect_that(weblmCalculateConditionalProbability(precedingWords = precedingWords, continuations = continuations, "title", orderOfNgram = -1), throws_error())
 
   url <- mscsweblm4r:::weblmGetURL()
   key <- mscsweblm4r:::weblmGetKey()
 
-  # URL: good, key: bad, expect graceful failure
+  # URL: good, key: bad, expect error
   mscsweblm4r:::weblmSetKey("invalid-key")
   expect_that(weblmCalculateConditionalProbability(precedingWords = precedingWords, continuations = continuations, "title", 4L), throws_error())
 
-  # URL: bad, key: bad, expect graceful failure
+  # URL: bad, key: bad, expect error
   mscsweblm4r:::weblmSetURL("invalid-URL")
   expect_that(weblmCalculateConditionalProbability(precedingWords = precedingWords, continuations = continuations, "title", 4L), throws_error())
 
-  # URL: bad, key: good, expect graceful failure
+  # URL: bad, key: good, expect error
   mscsweblm4r:::weblmSetKey(key)
   expect_that(weblmCalculateConditionalProbability(precedingWords = precedingWords, continuations = continuations, "title", 4L), throws_error())
 

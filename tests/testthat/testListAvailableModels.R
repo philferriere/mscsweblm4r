@@ -1,6 +1,6 @@
 context("testListAvailableModels")
 
-test_that("weblmListAvailableModels returns expected class types", {
+test_that("weblmListAvailableModels returns expected result structure", {
 
   skip_on_cran()
 
@@ -16,22 +16,22 @@ test_that("weblmListAvailableModels returns expected class types", {
   expect_that(names(res[["results"]])[3], equals("maxOrder"))
 })
 
-test_that("weblmListAvailableModels fails gracefully", {
+test_that("weblmListAvailableModels fails with an error", {
 
   skip_on_cran()
 
   url <- mscsweblm4r:::weblmGetURL()
   key <- mscsweblm4r:::weblmGetKey()
 
-  # URL: good, key: bad, expect graceful failure
+  # URL: good, key: bad, expect error
   mscsweblm4r:::weblmSetKey("invalid-key")
   expect_that(weblmListAvailableModels(), throws_error())
 
-  # URL: bad, key: bad, expect graceful failure
+  # URL: bad, key: bad, expect error
   mscsweblm4r:::weblmSetURL("invalid-URL")
   expect_that(weblmListAvailableModels(), throws_error())
 
-  # URL: bad, key: good, expect graceful failure
+  # URL: bad, key: good, expect error
   mscsweblm4r:::weblmSetKey(key)
   expect_that(weblmListAvailableModels(), throws_error())
 

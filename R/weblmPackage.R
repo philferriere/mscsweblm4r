@@ -7,6 +7,47 @@
 #' Once you have an account, Microsoft will provide you with a (free) API key
 #' you can use with this package.
 #'
+#' @section The MSCS Web LM REST API:
+#'
+#' Microsoft Cognitive Services -- formerly known as Project Oxford -- are a set
+#' of APIs, SDKs and services that developers can use to add AI features to
+#' their apps. Those features include emotion and video detection; facial,
+#' speech and vision recognition; and speech and language understanding.
+#'
+#' The Web Language Model REST API provides tools for natural language
+#' processing and is documented at \url{https://www.microsoft.com/cognitive-services/en-us/web-language-model-api/documentation}.
+#
+#' Per Microsoft's website, this API uses smoothed backoff N-gram language models
+#' (supporting Markov order up to 5) that were trained on four web-scale American
+#' English corpora collected by Bing (web page body, title, anchor and query).
+#'
+#' The MSCS Web LM REST API supports the following lookup operations:
+#'
+#' \itemize{
+#'  \item Insert spaces into a string of words adjoined together without any spaces (hashtags, URLs, etc.).
+#'  \item Calculate the joint probability that a sequence of words will appear together.
+#'  \item Compute the conditional probability that a specific word will follow an existing sequence of words.
+#'  \item Get the list of words (completions) most likely to follow a given sequence of words.
+#'  \item Retrieve the list of supported language models.
+#' }
+#'
+#' @section \pkg{mscsweblm4r} Functions:
+#'
+#' The following five \pkg{mscsweblm4r} core functions are used to wrap the
+#' MSCS Web LM REST API:
+#'
+#' \itemize{
+#'  \item Word breaking - \code{\link{weblmBreakIntoWords}} function
+#'  \item Joint probability - \code{\link{weblmCalculateJointProbability}} function
+#'  \item Conditional probability - \code{\link{weblmCalculateConditionalProbability}} function
+#'  \item Sequence completions - \code{\link{weblmGenerateNextWords}} function
+#'  \item Models list - \code{\link{weblmListAvailableModels}} function
+#' }
+#'
+#' The \code{\link{weblmInit}} configuration function is used to set the REST
+#' API URL and the private API key. It needs to be called \emph{only once},
+#' after package load, or the core functions will not work properly.
+#'
 #' @section Package Loading and Configuration:
 #'
 #' After loading the \pkg{mscsweblm4r} package with the \code{library()} function,
@@ -38,50 +79,7 @@
 #'
 #' \code{MSCS_WEBLANGUAGEMODEL_URL} - the URL for the Web LM REST API.
 #'
-#' \code{MSCS_WEBLANGUAGEMODEL_KEY} -  your personal Web LM REST API key.
-#'
-#' @section The MSCS Web LM REST API:
-#'
-#' Microsoft Cognitive Services -- formerly known as Project Oxford -- are a set
-#' of APIs, SDKs and services that developers can use to add AI features to
-#' their apps. Those features include emotion and video detection; facial,
-#' speech and vision recognition; and speech and language understanding.
-#'
-#' The Web Language Model REST API provides tools for natural language
-#' processing and is documented at \url{https://www.microsoft.com/cognitive-services/en-us/web-language-model-api/documentation}.
-#
-#' Per Microsoft's website, this API uses smoothed backoff N-gram language models
-#' (supporting Markov order up to 5) that were trained on four web-scale American
-#' English corpora collected by Bing (web page body, title, anchor and query).
-#'
-#' The MSCS Web LM REST API supports five lookup operations:
-#'
-#' \itemize{
-#'  \item Word breaking of strings that contain no spaces.
-#'  \item Joint (log10) probability of a sequence of words.
-#'  \item Conditional (log10) probability of one word given a sequence of
-#'  preceding words.
-#'  \item List of words (completions) most likely to follow a given sequence of
-#'  words.
-#'  \item List of supported language models.
-#' }
-#'
-#' @section \pkg{mscsweblm4r} Functions:
-#'
-#' The following five \pkg{mscsweblm4r} core functions are used to wrap the
-#' MSCS Web LM REST API:
-#'
-#' \itemize{
-#'  \item Word breaking - \code{\link{weblmBreakIntoWords}} function
-#'  \item Joint probability - \code{\link{weblmCalculateJointProbability}} function
-#'  \item Conditional probability - \code{\link{weblmCalculateConditionalProbability}} function
-#'  \item Sequence completions - \code{\link{weblmGenerateNextWords}} function
-#'  \item Models list - \code{\link{weblmListAvailableModels}} function
-#' }
-#'
-#' The \code{\link{weblmInit}} configuration function is used to set the REST
-#' API URL and the private API key. It needs to be called \emph{only once},
-#' after package load, or the core functions will not work properly.
+#' \code{MSCS_WEBLANGUAGEMODEL_KEY} - your personal Web LM REST API key.
 #'
 #' @section S3 Object of the Class \code{\link{weblm}}:
 #'

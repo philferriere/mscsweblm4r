@@ -3,7 +3,7 @@ context("testCalculateJointProbability")
 words <- c("where", "is", "San", "Francisco", "where is",
            "San Francisco", "where is San Francisco")
 
-test_that("weblmCalculateJointProbability returns expected class types", {
+test_that("weblmCalculateJointProbability returns expected result structure", {
 
   skip_on_cran()
 
@@ -18,31 +18,31 @@ test_that("weblmCalculateJointProbability returns expected class types", {
   expect_that(names(res[["results"]])[2], equals("probability"))
 })
 
-test_that("weblmCalculateJointProbability fails gracefully", {
+test_that("weblmCalculateJointProbability fails with an error", {
 
   skip_on_cran()
 
-  # precedingWords: bad, other params: good, expect graceful failure
+  # precedingWords: bad, other params: good, expect error
   expect_that(weblmCalculateJointProbability(inputWords = 0, "query", 4L), throws_error())
 
-  # modelToUse: bad, other params: good, expect graceful failure
+  # modelToUse: bad, other params: good, expect error
   expect_that(weblmCalculateJointProbability(words, modelToUse = "invalid-model"), throws_error())
 
-  # orderOfNgram: bad, other params: good, expect graceful failure
+  # orderOfNgram: bad, other params: good, expect error
   expect_that(weblmCalculateJointProbability(words, orderOfNgram = -1), throws_error())
 
   url <- mscsweblm4r:::weblmGetURL()
   key <- mscsweblm4r:::weblmGetKey()
 
-  # URL: good, key: bad, expect graceful failure
+  # URL: good, key: bad, expect error
   mscsweblm4r:::weblmSetKey("invalid-key")
   expect_that(weblmCalculateJointProbability(words, "query", 4L), throws_error())
 
-  # URL: bad, key: bad, expect graceful failure
+  # URL: bad, key: bad, expect error
   mscsweblm4r:::weblmSetURL("invalid-URL")
   expect_that(weblmCalculateJointProbability(words, "query", 4L), throws_error())
 
-  # URL: bad, key: good, expect graceful failure
+  # URL: bad, key: good, expect error
   mscsweblm4r:::weblmSetKey(key)
   expect_that(weblmCalculateJointProbability(words, "query", 4L), throws_error())
 

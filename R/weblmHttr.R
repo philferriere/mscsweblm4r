@@ -39,12 +39,14 @@ weblmHttr <- function(verb, method, query = NULL, body = NULL) {
 
   }
 
-  if (res$status_code > 201) {
+  # Note: MSCS APIs other than this one return 202 to signal they're
+  # processing the request, so don't fail a call in that case
+  if (res$status_code > 202) {
 
     # Try to extract a formatted error message
     obj <- try({err <- jsonlite::fromJSON(httr::content(res, "text", encoding = "UTF-8"))$error}, silent = TRUE)
 
-    if (class(obj) != "try-error") {
+    if (class(obj) != "try-error" && !is.null(err)) {
 
       # We could extract a formatted error message
       if (err$code == "Unspecified")
